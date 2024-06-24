@@ -29,28 +29,26 @@ theme:
     - content.action.view
     - content.code.annotate
     - content.code.copy
-    # - content.code.select
     # - content.footnote.tooltips
     # - content.tabs.link
     - content.tooltips
     # - header.autohide
-    # - navigation.expand
+    - navigation.expand
     - navigation.footer
     - navigation.indexes
-    # - navigation.instant
-    # - navigation.instant.prefetch
-    # - navigation.instant.progress
+     - navigation.instant
+     - navigation.instant.prefetch
+     - navigation.instant.progress
     # - navigation.prune
     - navigation.sections
     - navigation.tabs
-    # - navigation.tabs.sticky
     - navigation.top
     - navigation.tracking
     - search.highlight
     - search.share
     - search.suggest
     - toc.follow
-    # - toc.integrate
+    - toc.integrate
   palette:
     - media: "(prefers-color-scheme)"
       scheme: auto
@@ -151,14 +149,21 @@ markdown_extensions:
 
 
 # Page tree
-# Page tree
-
-
 
 nav:
-  - Home: index.md
-  - Introduktion: docs/intro.md
-  - Grundlæggende:
-    - Netværkskonfiguration: docs/basic-configuration.md
+  - Hjem: index.md
+  - Introduktion: intro.md
+  - Cisco Grundlæggende:
+    - Netværkskonfiguration: grundlaeggende-konfiguration.md
+    - Netværkstopologier: grundlaeggende-topologier.md
+    - Netværksenheder: grundlaeggende-enheder.md
+    - Netværksprotokoller: grundlaeggende-protokoller.md
+  - Cisco Mellemniveau:
+    - Routing: mellemniveau-routing.md
+    - Switching: mellemniveau-switching.md
+    - VLANs: mellemniveau-vlans.md
+    - STP: mellemniveau-stp.md
+
   - Avanceret:
-    - Netværkssikkerhed: docs/advanced-security.md
+    - Netværkssikkerhed: avanceret-sikkerhed.md
+    - Firewalls: firewalls.md
