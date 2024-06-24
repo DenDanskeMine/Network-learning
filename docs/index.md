@@ -1,17 +1,55 @@
-# Welcome to MkDocs
+---
+title: Velkommen til Network Learning
+---
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+# Network Learning
 
-## Commands
+Velkommen til **Network Learning** - din online ressource til at lære at konfigurere netværk og firewalls. Vores mål er at hjælpe dig med at forstå og mestre designet og implementeringen af sikre og effektive netværk.
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+![Network Learning Logo](assets/logo.png){ align=right }
 
-## Project layout
+## Introduktion
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+> "Netværk er nervesystemet i enhver organisation. Lær at mestre det, og du vil have kontrol over hele systemet." - [Martin Donath](https://squidfunk.github.io/mkdocs-material/)
+
+## Funktioner
+
+Vi tilbyder en bred vifte af ressourcer og funktioner for at hjælpe dig med din læring:
+
+- 🚀 **Grundlæggende og avancerede tutorials**
+- 🛠️ **Praktiske øvelser og kodeeksempler**
+- 📚 **Detaljeret dokumentation og referencer**
+- 🎓 **Certificeringsforberedelse**
+
+## Kom godt i gang
+
+=== "Begynder"
+
+    Hvis du er ny til netværk, anbefaler vi at starte her:
+
+    1. [Introduktion til netværk](docs/intro.md)
+    2. [Grundlæggende netværkskonfiguration](docs/basic-configuration.md)
+
+=== "Avanceret"
+
+    For de mere erfarne brugere, dyk ned i avancerede emner:
+
+    1. [Avanceret netværkssikkerhed](docs/advanced-security.md)
+    2. [Firewalls og adgangskontrol](docs/firewalls.md)
+
+## Eksempel på kode
+
+Lad os se på et simpelt konfigurations eksempel for en router:
+
+```yaml
+interface GigabitEthernet0/0
+ description Link to ISP
+ ip address dhcp
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1
+ description LAN
+ ip address 192.168.1.1 255.255.255.0
+ duplex auto
+ speed auto

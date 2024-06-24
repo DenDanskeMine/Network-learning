@@ -1,5 +1,11 @@
 # Project information
 site_name: Network Learning
+theme:
+  name: material
+  logo: assets/logo.png
+  features:
+    - navigation.tabs
+    - navigation.instant
 site_url: https://squidfunk.github.io/mkdocs-material/
 site_author: Christian Rose
 site_description: >-
@@ -146,3 +152,13 @@ markdown_extensions:
 
 # Page tree
 # Page tree
+
+
+
+nav:
+  - Home: index.md
+  - Introduktion: docs/intro.md
+  - Grundlæggende:
+    - Netværkskonfiguration: docs/basic-configuration.md
+  - Avanceret:
+    - Netværkssikkerhed: docs/advanced-security.md
