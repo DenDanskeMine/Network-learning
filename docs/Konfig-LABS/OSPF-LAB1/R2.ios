@@ -1,0 +1,13 @@
+hostname R2
+!
+interface fastethernet 0/0
+ip address 10.10.10.2 255.255.255.252
+no shutdown
+!
+interface fastethernet 0/1
+ip address 10.10.10.5 255.255.255.252
+no shutdown
+!
+router ospf 1
+network 10.10.10.0 0.0.0.3 area 0
+network 10.10.10.4 0.0.0.3 area 0

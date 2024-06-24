@@ -1,11 +1,11 @@
 
 # OSPF
 
-OSPF er en [!badge text="IGP" variant="ghost" ](/test.md) (Interior Gateway Protocol), som bruges til dynamisk routing.<br>
+OSPF er en [`IGP`](/test.md) (Interior Gateway Protocol), som bruges til dynamisk routing.<br>
 
 OSPF står for Open Shortest Path First, og er en af de mest brugte routing protokoller.<br>
 Navnet er lidt misledende da det ikke er den fysiske korteste vej den vælger.<br>
-Den vælger den vej der har den laveste [!badge text="metric" variant="ghost" ] (omkostning).
+Den vælger den vej der har den laveste `metric ` (omkostning).
 Metric er en værdi der bliver beregnet sp ledes: [!badge text="båndbredde / interface hastighed" variant="ghost" ].<br>
 
 
@@ -57,9 +57,9 @@ Her er et viruelt eksempel på det:
 
 Så det vil altså sige at R1 ser R2 og R3 som naboer, og R2 ser R1 og R3 som naboer osv.
 
-Hver router har en [!badge text="LSDB" variant="ghost" ] (Link State Database), som er en liste over alle naboer og deres omkostninger.
+Hver router har en `LSDB `(Link State Database), som er en liste over alle naboer og deres omkostninger.
 
-Denne dtabase bliver formet af [!badge text="LSAs" variant="ghost" ] (Link State Advertisements), som er pakker der bliver sendt ud til alle naboer, og indeholder information omkring routeren der sender pakken.
+Denne dtabase bliver formet af `LSAs` (Link State Advertisements), som er pakker der bliver sendt ud til alle naboer, og indeholder information omkring routeren der sender pakken.
 
 
 ## LAB Setup
@@ -213,7 +213,7 @@ På linje 16 og 17 kan vi se at R1 har en rute til de to netværk.<br>
 `O` betyder at der er en OSPF route, over til PC1s netværk.<br>
 `C` betyder at det er en directly connected route til PC2s netværk. 
 
- +++
+ 
 
  I routing tabellen kan vi se [110/2] og [110/3], som er omkostningen til de to netværk.<br>
  `110` er OSPF cost, og `2` og `3` er omkostningen til de to netværk.<br>
@@ -225,34 +225,33 @@ For at verificere at OSPF virker, kan vi også bruge kommandoen `show ip ospf ne
 Denne kommnado vil vise os hvilke naboer vi har, og hvilken state de er i.
 
 
-+++ :icon-x-circle: R1
- ![](img/OSPF_R1.png) 
+=== ":octicons-x-circle-16: R1"
+    ![](img/OSPF_R1.png) 
 
-```js #16-17
-R1#show ip ospf neighbor
-Neighbor ID     Pri   State           Dead Time   Address         Interface
-10.10.10.5        1   FULL/BDR        00:00:36    10.10.10.2      FastEthernet0/0
-```
-Her kan vi se at R1 har et naboskab med R2, og at de er i state `FULL/BDR`.<br>
- +++ :icon-x-circle: R2
-  ![](img/OSPF_R2.png) 
- ```js #16-17
- R2#show ip ospf neighbor
-Neighbor ID     Pri   State           Dead Time   Address         Interface
-172.16.0.1        1   FULL/DR         00:00:35    10.10.10.1      FastEthernet0/0
-172.16.1.1        1   FULL/DR         00:00:34    10.10.10.6      FastEthernet0/1
-```
-Her kan vi se at R2 har et naboskab med R1 og R3, og at de er i state `FULL/DR`.<br>
-+++ :icon-x-circle: R3
- ![](img/OSPF_R3.png) 
-```js #16-17
-R3#show ip ospf neighbor
-Neighbor ID     Pri   State           Dead Time   Address         Interface
-10.10.10.5        1   FULL/BDR        00:00:31    10.10.10.5      FastEthernet0/0
-```
-Her kan vi se at R3 har et naboskab med R2, og at de er i state `FULL/BDR`.<br>
+    ```js hl_lines="16-17"
+    R1#show ip ospf neighbor
+    Neighbor ID     Pri   State           Dead Time   Address         Interface
+    10.10.10.5        1   FULL/BDR        00:00:36    10.10.10.2      FastEthernet0/0
+    ```
+    Her kan vi se at R1 har et naboskab med R2, og at de er i state `FULL/BDR`.<br>
+=== ":octicons-x-circle-16: R2"
+    ![](img/OSPF_R2.png) 
+    ```js hl_lines="16-17"
+    R2#show ip ospf neighbor
+    Neighbor ID     Pri   State           Dead Time   Address         Interface
+    172.16.0.1        1   FULL/DR         00:00:35    10.10.10.1      FastEthernet0/0
+    172.16.1.1        1   FULL/DR         00:00:34    10.10.10.6      FastEthernet0/1
+    ```
+    Her kan vi se at R2 har et naboskab med R1 og R3, og at de er i state `FULL/DR`.<br>
+=== ":octicons-x-circle-16: R3"
+    ![](img/OSPF_R3.png) 
+    ```js hl_lines="16-17"
+    R3#show ip ospf neighbor
+    Neighbor ID     Pri   State           Dead Time   Address         Interface
+    10.10.10.5        1   FULL/BDR        00:00:31    10.10.10.5      FastEthernet0/0
+    ```
+    Her kan vi se at R3 har et naboskab med R2, og at de er i state `FULL/BDR`.<br>
 
- +++
 
 ## Opsummering
 
@@ -264,6 +263,6 @@ Dette bliver også kaldt et backbone area, da det er det primære område i et O
 Man kan ikke have flere areas uden at have et `backbone area`, da alle andre areas skal være forbundet til `area 0`.<br>
 
  ## Packet Tracer
-Som altid kan du downloade det færdige protjekt her: [!file](/Konfig-LABS/OSPF-LAB1/OSPF-LAB1.pkt)
+Som altid kan du downloade det færdige protjekt her: [OSPF-LAB1.pkt](downloads/OSPF-LAB1.pkt)
 
 Se min [!badge Packet Tracer Starterguide](/Starterguide/pt.md)
