@@ -9,7 +9,7 @@ site_description: >-
 # Repository
 repo_name: DenDanskeMine/Network-learning
 repo_url: https://github.com/DenDanskeMine/Network-learning
-
+edit_uri: edit/main/docs/
 # Copyright
 copyright: Copyright &copy; 2023 - 2024 Christian Rose
 
