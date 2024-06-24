@@ -2,12 +2,12 @@
 
 I denne guide vil jeg tage dig igennem din første konfiguration af en cisco router.<br>
 
-Hvis du ikke har en router, kan du bruge `Packet Tracer` ](https://skillsforall.com/resources/lab-downloads?courseLang=en-US), som er et program som emulerer cisco udstyr.<br>
+Hvis du ikke har en router, kan du bruge [`Packet Tracer` ](https://skillsforall.com/resources/lab-downloads?courseLang=en-US), som er et program som emulerer cisco udstyr.<br>
 Bemærk at du skal have en konto for at kunne downloade programmet.<br>
 Du kan også bruge Cisco DevNet, men dette er lidt mere avanceret at skulle sætte op.<br>
 
 
-Her er en simpel konfiguration af en `router` ](router.md).
+Her er en simpel konfiguration af en [ `router` ](router.md).
 
 Når du starter din router op for første gang, vil du blive mødt af en prompt, som ser sådan her ud:
 
