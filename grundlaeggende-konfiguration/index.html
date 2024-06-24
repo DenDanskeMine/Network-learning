@@ -1,0 +1,2086 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Write your documentation in Markdown and create a professional static site in minutes – searchable, customizable, in 60+ languages, for all devices">
+      
+      
+        <meta name="author" content="Christian Rose">
+      
+      
+        <link rel="canonical" href="https://squidfunk.github.io/mkdocs-material/grundlaeggende-konfiguration/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../ospf-begynder/">
+      
+      
+      <link rel="icon" href="../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
+    
+    
+      
+        <title>Netværkskonfiguration - Network Learning</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config",""),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="auto" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#frste-konfiguration-af-en-router" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Network Learning" class="md-header__button md-logo" aria-label="Network Learning" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
+  <path d="M3.136,17.387l0,42.932l42.932,21.467l-42.932,-64.399Z" />
+  <path d="M21.91,8l42.933,64.398l-18.775,9.388l-42.932,-64.399l18.774,-9.387Z" style="fill-opacity: 0.5" />
+  <path d="M67.535,17.387l-27.262,18.156l21.878,32.818l5.384,2.691l0,-53.665Z" />
+  <path d="M67.535,17.387l0,53.666l18.774,-9.388l0,-53.665l-18.774,9.387Z" style="fill-opacity: 0.25" />
+</svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Network Learning
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Netværkskonfiguration
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="auto" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_2">
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/DenDanskeMine/Network-learning" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    DenDanskeMine/Network-learning
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href=".." class="md-tabs__link">
+          
+  
+  Hjem
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../intro.md" class="md-tabs__link">
+          
+  
+  Palo Alto Networks
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  Cisco Grundlæggende
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../mellemniveau-routing.md" class="md-tabs__link">
+          
+  
+  Cisco Mellemniveau
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../avanceret-sikkerhed.md" class="md-tabs__link">
+          
+  
+  Avanceret
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Network Learning" class="md-nav__button md-logo" aria-label="Network Learning" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
+  <path d="M3.136,17.387l0,42.932l42.932,21.467l-42.932,-64.399Z" />
+  <path d="M21.91,8l42.933,64.398l-18.775,9.388l-42.932,-64.399l18.774,-9.387Z" style="fill-opacity: 0.5" />
+  <path d="M67.535,17.387l-27.262,18.156l21.878,32.818l5.384,2.691l0,-53.665Z" />
+  <path d="M67.535,17.387l0,53.666l18.774,-9.388l0,-53.665l-18.774,9.387Z" style="fill-opacity: 0.25" />
+</svg>
+
+    </a>
+    Network Learning
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/DenDanskeMine/Network-learning" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    DenDanskeMine/Network-learning
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Hjem
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Hjem
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduktion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pan.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Palo Alto Networks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cisco.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cisco
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fortinet.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fortinet
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lenovo.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lenovo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mellanox.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mellanox
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../netvaerksprotokoller.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Netværksprotokoller
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Palo Alto Networks
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Palo Alto Networks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../intro.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduktion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Palo Alto Networks Grundlæggende
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Palo Alto Networks Grundlæggende
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pan-grundlaeggende-konfiguration.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Konfiguration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pan-grundlaeggende-topologier.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Topologier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pan-grundlaeggende-enheder.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enheder
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pan-grundlaeggende-protokoller.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Protokoller
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Palo Alto Networks Mellemniveau
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Palo Alto Networks Mellemniveau
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pan-mellemniveau-routing.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Routing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pan-mellemniveau-switching.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Switching
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pan-mellemniveau-vlans.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VLANs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pan-mellemniveau-stp.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    STP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Cisco Grundlæggende
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Cisco Grundlæggende
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Netværkskonfiguration
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Netværkskonfiguration
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#frste-konfiguration-af-en-router" class="md-nav__link">
+    <span class="md-ellipsis">
+      Første konfiguration af en router
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Første konfiguration af en router">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#privileged-exec-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Privileged EXEC Mode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-configuration-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Global Configuration Mode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hostname" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hostname
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interface-mode-ip-adresse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interface mode / IP-adresse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#show-running-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      show running-config
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sikkerhed-og-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sikkerhed og SSH
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sikkerhed og SSH">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ip-domain-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      ip domain-name
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crypto-key-generate-rsa" class="md-nav__link">
+    <span class="md-ellipsis">
+      crypto key generate rsa
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#username-og-password" class="md-nav__link">
+    <span class="md-ellipsis">
+      username og password
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#line-vty" class="md-nav__link">
+    <span class="md-ellipsis">
+      line vty
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opsummering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Opsummering
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#packet-tracer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Packet Tracer
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grundlaeggende-topologier.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Netværkstopologier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grundlaeggende-enheder.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Netværksenheder
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grundlaeggende-protokoller.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Netværksprotokoller
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ospf-begynder/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OSPF
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Cisco Mellemniveau
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Cisco Mellemniveau
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mellemniveau-routing.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Routing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mellemniveau-switching.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Switching
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mellemniveau-vlans.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VLANs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mellemniveau-stp.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    STP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Avanceret
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Avanceret
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../avanceret-sikkerhed.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Netværkssikkerhed
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../firewalls.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Firewalls
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#frste-konfiguration-af-en-router" class="md-nav__link">
+    <span class="md-ellipsis">
+      Første konfiguration af en router
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Første konfiguration af en router">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#privileged-exec-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Privileged EXEC Mode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-configuration-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Global Configuration Mode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hostname" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hostname
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interface-mode-ip-adresse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interface mode / IP-adresse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#show-running-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      show running-config
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sikkerhed-og-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sikkerhed og SSH
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sikkerhed og SSH">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ip-domain-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      ip domain-name
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crypto-key-generate-rsa" class="md-nav__link">
+    <span class="md-ellipsis">
+      crypto key generate rsa
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#username-og-password" class="md-nav__link">
+    <span class="md-ellipsis">
+      username og password
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#line-vty" class="md-nav__link">
+    <span class="md-ellipsis">
+      line vty
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opsummering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Opsummering
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#packet-tracer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Packet Tracer
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/DenDanskeMine/Network-learning/edit/main/docs/grundlaeggende-konfiguration.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/DenDanskeMine/Network-learning/raw/main/docs/grundlaeggende-konfiguration.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
+    </a>
+  
+
+
+  <h1>Netværkskonfiguration</h1>
+
+<h2 id="frste-konfiguration-af-en-router">Første konfiguration af en router<a class="headerlink" href="#frste-konfiguration-af-en-router" title="Permanent link">&para;</a></h2>
+<p>I denne guide vil jeg tage dig igennem din første konfiguration af en cisco router.<br></p>
+<p>Hvis du ikke har en router, kan du bruge <a href="https://skillsforall.com/resources/lab-downloads?courseLang=en-US"><code>Packet Tracer</code> </a>, som er et program som emulerer cisco udstyr.<br>
+Bemærk at du skal have en konto for at kunne downloade programmet.<br>
+Du kan også bruge Cisco DevNet, men dette er lidt mere avanceret at skulle sætte op.<br></p>
+<p>Her er en simpel konfiguration af en <a href="router.md"> <code>router</code> </a>.</p>
+<p>Når du starter din router op for første gang, vil du blive mødt af en prompt, som ser sådan her ud:</p>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>would you like to enter the initial configuration dialog? [yes/no]: 
+</span></code></pre></div>
+Her er det vigtigt at vi vælger nej, da vi selv vil konfigurere routeren.<br>
+Så du skriver bare <code>no</code> og trykker enter.</p>
+<p>nu vil den prompte Promte dig med en anden prompt, som ser sådan her ud:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nx">Press</span><span class="w"> </span><span class="nx">RETURN</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">get</span><span class="w"> </span><span class="nx">started</span><span class="o">!</span>
+</span></code></pre></div>
+<p>Så du trykker selvfølgelig bare enter, og så vil du blive mødt af en prompt, som ser sådan her ud:</p>
+<p><div class="language-js highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nx">Router</span><span class="o">&gt;</span>
+</span></code></pre></div>
+Når du kan se et &gt; tegn, efterfulgt af routerens navn, er du i det der hedder <code>user EXEC Mode</code>, som er en begrænset tilstand, hvor du ikke kan lave de store ændringer.</p>
+<h3 id="privileged-exec-mode">Privileged EXEC Mode<a class="headerlink" href="#privileged-exec-mode" title="Permanent link">&para;</a></h3>
+<p>Så derfor skriver vi <code>Enable</code> og trykker enter, så vi kan komme ind i <a href="#privileged-exec-mode"><code>Privileged EXEC Mode</code></a>, som er en tilstand hvor vi kan se hele routerens konfiguration, og lave små ændringer.</p>
+<p>Når du er i <a href="#privileged-exec-mode"><code>Privileged EXEC Mode</code></a> så ser prompten sådan her ud:</p>
+<p><div class="language-js highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nx">Router</span><span class="err">#</span>
+</span></code></pre></div>
+Det er typisk her vi ville lave <code>ping</code>, og <code>show</code> kommandoer.</p>
+<h3 id="global-configuration-mode">Global Configuration Mode<a class="headerlink" href="#global-configuration-mode" title="Permanent link">&para;</a></h3>
+<p>Vi vil meget gerne et tand højere op, så vi skriver <code>configure terminal</code> og trykker enter, så vi kan komme ind i <a href="#global-configuration-mode"><code>Global Configuration Mode</code></a>, som er en tilstand hvor vi kan lave ændringer i routerens konfiguration.</p>
+<p>Når du er i <a href="#global-configuration-mode"><code>Global Configuration Mode</code></a> så ser prompten sådan her ud:</p>
+<p><div class="language-js highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nx">Router</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span><span class="err">#</span>
+</span></code></pre></div>
+Det er denne mode hvor vi laver alle vores ændringer, og det er også her vi vil lave vores første konfiguration.<br></p>
+<h3 id="hostname">Hostname<a class="headerlink" href="#hostname" title="Permanent link">&para;</a></h3>
+<p>Det første vi starter med, er at give routeren et navn, så vi kan identificere den.<br>
+for at gøre dette skiver vi følgende:</p>
+<p><div class="language-js highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nx">hostname</span><span class="w"> </span><span class="nx">R1</span>
+</span></code></pre></div>
+hostname er en kommando som sætter routerens navn, og R1 er det navn vi har valgt at give routeren.<br>
+<code>hostname &lt;navn&gt;</code> </p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Bemærk at der ikke må være mellemrum i navnet.<br>
+<code>hostname R 1</code> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2c5.5 0 10 4.5 10 10s-4.5 10-10 10S2 17.5 2 12 6.5 2 12 2m0 2c-1.9 0-3.6.6-4.9 1.7l11.2 11.2c1-1.4 1.7-3.1 1.7-4.9 0-4.4-3.6-8-8-8m4.9 14.3L5.7 7.1C4.6 8.4 4 10.1 4 12c0 4.4 3.6 8 8 8 1.9 0 3.6-.6 4.9-1.7Z"/></svg></span><br>
+<code>hostname R1</code> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 7 9 19l-5.5-5.5 1.41-1.41L9 16.17 19.59 5.59 21 7Z"/></svg></span><br></p>
+</div>
+<p>Når du har skrevet kommandoen, trykker du enter, og prompten vil nu se sådan her ud:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nx">R1</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span><span class="err">#</span>
+</span></code></pre></div></p>
+<h3 id="interface-mode-ip-adresse">Interface mode / IP-adresse<a class="headerlink" href="#interface-mode-ip-adresse" title="Permanent link">&para;</a></h3>
+<p>Nu har vi givet routeren et navn, så nu vil vi gerne sætte en <code>ip-adresse</code> på routeren, så vi kan sætte den til at kommunikere med andre enheder.</p>
+<p>For at gøre dette, skal vi ind i interface mode, som er en tilstand hvor vi kan lave ændringer på de forskellige porte på routeren.</p>
+<p>For at komme ind i interface mode, skriver vi <code>interface &lt;navn på interface&gt;</code> og trykker enter.<br>
+På nogen routere kan der være forskellige interfaces, som fx FastEthernet og GigabitEthernet.
+Denne router har kun FastEthernet interfaces, så vi skriver <code>interface fastethernet 0/0</code> og trykker enter.
+<code>fastethernet</code> er hastigheden på porten, og <code>0/0</code> er port nummeret.</p>
+<p>Hvis du er i tvivl om hvilke interfaces der er på din router, kan du skrive <code>show ip interface brief</code> og trykke enter, så vil du få en liste over alle interfaces på routeren.</p>
+<div class="admonition tip">
+<p class="admonition-title">Info om kommandoer i forskellige modes.</p>
+<p>Bemærk at alle <code>show</code> kommandoer skal skrives i <a href="#privileged-exec-mode"><code>Privileged EXEC Mode</code></a>, og ikke i <a href="#global-configuration-mode"><code>Global Configuration Mode</code></a>.<br>
+Du kan skrive <code>do</code> foran kommandoen, så vil den virke i <a href="#global-configuration-mode"><code>Global Configuration Mode</code></a>.<br>
+Hvis du ikke lige magter at skrive hele kommandoen, kan du også bare skrive <code>sh ip int br</code> og trykke enter, så vil den også virke.<br></p>
+<p>Der er rigtig mange forkortelser i ios, så det er bare med at lære dem, så du kan skrive dem hurtigt. <img alt="😄" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/1f604.svg" title=":smile:" /> <br>
+evt se listen her: <a href="#interface-mode--ip-adresse">Cisco IOS Shortcuts</a> </p>
+</div>
+<p>Når du er i interface mode, så ser prompten sådan her ud:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nx">R1</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span>
+</span></code></pre></div>
+Nu er vi i interface mode, og vi vil gerne sætte en ip-adresse på porten, så vi kan sætte den til at kommunikere med andre enheder.</p>
+<p>kommandoen til dette er <code>ip address &lt;ip-adresse&gt; &lt;subnetmaske&gt;</code>
+Vi vil gerne sætte ip-adressen <code>172.16.0.1</code> på porten, så vi skriver <code>ip address 172.16.0.1 255.255.255.0</code> og trykker enter.</p>
+<p>Når du har skrevet kommandoen, trykker du enter, og prompten vil nu se sådan her ud:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nx">R1</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span>
+</span></code></pre></div>
+Grunden til jeg bliver ved med at skrive prompten, er for at du kan se og forstå hvilken mode du er i. <img alt="😄" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/1f604.svg" title=":smile:" /> <br>
+Dette er meget vigtigt, at forstå, da nogen kommandoer kun kan bruges i bestemte modes.<br></p>
+<p>Nu har vi sat en ip-adresse på porten, så nu vil vi gerne aktivere porten, så den kan sende og modtage data.</p>
+<p>For at gøre dette, skriver vi <code>no shutdown</code> og trykker enter.</p>
+<p>Når du har skrevet kommandoen, trykker du enter, og nu vil der komme en masse tekst på skærmen, som ser sådan her ud:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nx">R1</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="err">#</span><span class="w"> </span><span class="o">%</span><span class="nx">LINK</span><span class="o">-</span><span class="mf">5</span><span class="o">-</span><span class="nx">CHANGED</span><span class="o">:</span><span class="w"> </span><span class="nx">Interface</span><span class="w"> </span><span class="nx">FastEthernet0</span><span class="o">/</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">changed</span><span class="w"> </span><span class="nx">state</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">up</span>
+</span></code></pre></div>
+Dette er bare routeren som fortæller os at porten er blevet aktiveret / slået til.<br></p>
+<h3 id="show-running-config">show running-config<a class="headerlink" href="#show-running-config" title="Permanent link">&para;</a></h3>
+<p>Hvis du nu skriver <code>end</code> og trykker enter, vil du komme tilbage til <code>Privileged EXEC Mode</code> ](#privileged-exec-mode).<br></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><code>exit</code> tager dig ud af den mode du er i, og tilbage til den mode du var i før.<br>
+<code>end</code> tager dig tilbage til <a href="#privileged-exec-mode"><code>Privileged EXEC Mode</code> </a>.</p>
+</div>
+<p><div class="language-js highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nx">R1</span><span class="err">#</span>
+</span></code></pre></div>
+Dette betyder at du er tilbage i <a href="#privileged-exec-mode"><code>Privileged EXEC Mode</code> </a>, og du kan nu se din konfiguration ved at skrive <code>show running-config</code> og trykke enter.</p>
+<p>Du vil nu i bunden af terminalen se et promt som ser sådan her ud:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="o">--</span><span class="nx">More</span><span class="o">--</span>
+</span></code></pre></div>
+Dette betyder at der er mere tekst, som ikke kan vises på skærmen, så du skal trykke på <code>mellemrum</code> for at kunne se hele konfigurationen. <br>
+Eller <code>enter</code> for at se en linje ad gangen.
+Konfigurationen vil se sådan her ud:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nx">Current</span><span class="w"> </span><span class="nx">configuration</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mf">571</span><span class="w"> </span><span class="nx">bytes</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="o">!</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="nx">version</span><span class="w"> </span><span class="mf">12.4</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="nx">no</span><span class="w"> </span><span class="nx">service</span><span class="w"> </span><span class="nx">timestamps</span><span class="w"> </span><span class="nx">log</span><span class="w"> </span><span class="nx">datetime</span><span class="w"> </span><span class="nx">msec</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="nx">no</span><span class="w"> </span><span class="nx">service</span><span class="w"> </span><span class="nx">timestamps</span><span class="w"> </span><span class="nx">debug</span><span class="w"> </span><span class="nx">datetime</span><span class="w"> </span><span class="nx">msec</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="nx">no</span><span class="w"> </span><span class="nx">service</span><span class="w"> </span><span class="nx">password</span><span class="o">-</span><span class="nx">encryption</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="o">!</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="nx">hostname</span><span class="w"> </span><span class="nx">R1</span>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="o">!</span>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="o">!</span>
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="o">!</span>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="o">!</span>
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="o">!</span>
+</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="o">!</span>
+</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="o">!</span>
+</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="o">!</span>
+</span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="nx">ip</span><span class="w"> </span><span class="nx">cef</span>
+</span><span id="__span-12-18"><a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a><span class="nx">no</span><span class="w"> </span><span class="nx">ipv6</span><span class="w"> </span><span class="nx">cef</span>
+</span><span id="__span-12-19"><a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a><span class="o">!</span>
+</span><span id="__span-12-20"><a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a><span class="o">!</span>
+</span><span id="__span-12-21"><a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a><span class="o">!</span>
+</span><span id="__span-12-22"><a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a><span class="o">!</span>
+</span><span id="__span-12-23"><a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a><span class="o">!</span>
+</span><span id="__span-12-24"><a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a><span class="o">!</span>
+</span><span id="__span-12-25"><a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a><span class="o">!</span>
+</span><span id="__span-12-26"><a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a><span class="o">!</span>
+</span><span id="__span-12-27"><a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a><span class="o">!</span>
+</span><span id="__span-12-28"><a id="__codelineno-12-28" name="__codelineno-12-28" href="#__codelineno-12-28"></a><span class="o">!</span>
+</span><span id="__span-12-29"><a id="__codelineno-12-29" name="__codelineno-12-29" href="#__codelineno-12-29"></a><span class="o">!</span>
+</span><span id="__span-12-30"><a id="__codelineno-12-30" name="__codelineno-12-30" href="#__codelineno-12-30"></a><span class="o">!</span>
+</span><span id="__span-12-31"><a id="__codelineno-12-31" name="__codelineno-12-31" href="#__codelineno-12-31"></a><span class="nx">spanning</span><span class="o">-</span><span class="nx">tree</span><span class="w"> </span><span class="nx">mode</span><span class="w"> </span><span class="nx">pvst</span>
+</span><span id="__span-12-32"><a id="__codelineno-12-32" name="__codelineno-12-32" href="#__codelineno-12-32"></a><span class="o">!</span>
+</span><span id="__span-12-33"><a id="__codelineno-12-33" name="__codelineno-12-33" href="#__codelineno-12-33"></a><span class="o">!</span>
+</span><span id="__span-12-34"><a id="__codelineno-12-34" name="__codelineno-12-34" href="#__codelineno-12-34"></a><span class="o">!</span>
+</span><span id="__span-12-35"><a id="__codelineno-12-35" name="__codelineno-12-35" href="#__codelineno-12-35"></a><span class="o">!</span>
+</span><span id="__span-12-36"><a id="__codelineno-12-36" name="__codelineno-12-36" href="#__codelineno-12-36"></a><span class="o">!</span>
+</span><span id="__span-12-37"><a id="__codelineno-12-37" name="__codelineno-12-37" href="#__codelineno-12-37"></a><span class="o">!</span>
+</span><span id="__span-12-38"><a id="__codelineno-12-38" name="__codelineno-12-38" href="#__codelineno-12-38"></a><span class="kr">interface</span><span class="w"> </span><span class="nx">FastEthernet0</span><span class="o">/</span><span class="mf">0</span>
+</span><span id="__span-12-39"><a id="__codelineno-12-39" name="__codelineno-12-39" href="#__codelineno-12-39"></a><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">address</span><span class="w"> </span><span class="mf">172.16.0.1</span><span class="w"> </span><span class="mf">255.255.255.0</span>
+</span><span id="__span-12-40"><a id="__codelineno-12-40" name="__codelineno-12-40" href="#__codelineno-12-40"></a><span class="w"> </span><span class="nx">duplex</span><span class="w"> </span><span class="nx">auto</span>
+</span><span id="__span-12-41"><a id="__codelineno-12-41" name="__codelineno-12-41" href="#__codelineno-12-41"></a><span class="w"> </span><span class="nx">speed</span><span class="w"> </span><span class="nx">auto</span>
+</span><span id="__span-12-42"><a id="__codelineno-12-42" name="__codelineno-12-42" href="#__codelineno-12-42"></a><span class="o">!</span>
+</span><span id="__span-12-43"><a id="__codelineno-12-43" name="__codelineno-12-43" href="#__codelineno-12-43"></a><span class="kr">interface</span><span class="w"> </span><span class="nx">FastEthernet0</span><span class="o">/</span><span class="mf">1</span>
+</span><span id="__span-12-44"><a id="__codelineno-12-44" name="__codelineno-12-44" href="#__codelineno-12-44"></a><span class="w"> </span><span class="nx">no</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">address</span>
+</span><span id="__span-12-45"><a id="__codelineno-12-45" name="__codelineno-12-45" href="#__codelineno-12-45"></a><span class="w"> </span><span class="nx">duplex</span><span class="w"> </span><span class="nx">auto</span>
+</span><span id="__span-12-46"><a id="__codelineno-12-46" name="__codelineno-12-46" href="#__codelineno-12-46"></a><span class="w"> </span><span class="nx">speed</span><span class="w"> </span><span class="nx">auto</span>
+</span><span id="__span-12-47"><a id="__codelineno-12-47" name="__codelineno-12-47" href="#__codelineno-12-47"></a><span class="w"> </span><span class="nx">shutdown</span>
+</span><span id="__span-12-48"><a id="__codelineno-12-48" name="__codelineno-12-48" href="#__codelineno-12-48"></a><span class="o">!</span>
+</span><span id="__span-12-49"><a id="__codelineno-12-49" name="__codelineno-12-49" href="#__codelineno-12-49"></a><span class="kr">interface</span><span class="w"> </span><span class="nx">Vlan1</span>
+</span><span id="__span-12-50"><a id="__codelineno-12-50" name="__codelineno-12-50" href="#__codelineno-12-50"></a><span class="w"> </span><span class="nx">no</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">address</span>
+</span><span id="__span-12-51"><a id="__codelineno-12-51" name="__codelineno-12-51" href="#__codelineno-12-51"></a><span class="w"> </span><span class="nx">shutdown</span>
+</span><span id="__span-12-52"><a id="__codelineno-12-52" name="__codelineno-12-52" href="#__codelineno-12-52"></a><span class="o">!</span>
+</span><span id="__span-12-53"><a id="__codelineno-12-53" name="__codelineno-12-53" href="#__codelineno-12-53"></a><span class="nx">ip</span><span class="w"> </span><span class="nx">classless</span>
+</span><span id="__span-12-54"><a id="__codelineno-12-54" name="__codelineno-12-54" href="#__codelineno-12-54"></a><span class="o">!</span>
+</span><span id="__span-12-55"><a id="__codelineno-12-55" name="__codelineno-12-55" href="#__codelineno-12-55"></a><span class="nx">ip</span><span class="w"> </span><span class="nx">flow</span><span class="o">-</span><span class="k">export</span><span class="w"> </span><span class="nx">version</span><span class="w"> </span><span class="mf">9</span>
+</span><span id="__span-12-56"><a id="__codelineno-12-56" name="__codelineno-12-56" href="#__codelineno-12-56"></a><span class="o">!</span>
+</span><span id="__span-12-57"><a id="__codelineno-12-57" name="__codelineno-12-57" href="#__codelineno-12-57"></a><span class="o">!</span>
+</span><span id="__span-12-58"><a id="__codelineno-12-58" name="__codelineno-12-58" href="#__codelineno-12-58"></a><span class="o">!</span>
+</span><span id="__span-12-59"><a id="__codelineno-12-59" name="__codelineno-12-59" href="#__codelineno-12-59"></a><span class="o">!</span>
+</span><span id="__span-12-60"><a id="__codelineno-12-60" name="__codelineno-12-60" href="#__codelineno-12-60"></a><span class="o">!</span>
+</span><span id="__span-12-61"><a id="__codelineno-12-61" name="__codelineno-12-61" href="#__codelineno-12-61"></a><span class="o">!</span>
+</span><span id="__span-12-62"><a id="__codelineno-12-62" name="__codelineno-12-62" href="#__codelineno-12-62"></a><span class="o">!</span>
+</span><span id="__span-12-63"><a id="__codelineno-12-63" name="__codelineno-12-63" href="#__codelineno-12-63"></a><span class="o">!</span>
+</span><span id="__span-12-64"><a id="__codelineno-12-64" name="__codelineno-12-64" href="#__codelineno-12-64"></a><span class="nx">line</span><span class="w"> </span><span class="nx">con</span><span class="w"> </span><span class="mf">0</span>
+</span><span id="__span-12-65"><a id="__codelineno-12-65" name="__codelineno-12-65" href="#__codelineno-12-65"></a><span class="o">!</span>
+</span><span id="__span-12-66"><a id="__codelineno-12-66" name="__codelineno-12-66" href="#__codelineno-12-66"></a><span class="nx">line</span><span class="w"> </span><span class="nx">aux</span><span class="w"> </span><span class="mf">0</span>
+</span><span id="__span-12-67"><a id="__codelineno-12-67" name="__codelineno-12-67" href="#__codelineno-12-67"></a><span class="o">!</span>
+</span><span id="__span-12-68"><a id="__codelineno-12-68" name="__codelineno-12-68" href="#__codelineno-12-68"></a><span class="nx">line</span><span class="w"> </span><span class="nx">vty</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="mf">4</span>
+</span><span id="__span-12-69"><a id="__codelineno-12-69" name="__codelineno-12-69" href="#__codelineno-12-69"></a><span class="w"> </span><span class="nx">login</span>
+</span><span id="__span-12-70"><a id="__codelineno-12-70" name="__codelineno-12-70" href="#__codelineno-12-70"></a><span class="o">!</span>
+</span><span id="__span-12-71"><a id="__codelineno-12-71" name="__codelineno-12-71" href="#__codelineno-12-71"></a><span class="o">!</span>
+</span><span id="__span-12-72"><a id="__codelineno-12-72" name="__codelineno-12-72" href="#__codelineno-12-72"></a><span class="o">!</span>
+</span><span id="__span-12-73"><a id="__codelineno-12-73" name="__codelineno-12-73" href="#__codelineno-12-73"></a><span class="nx">end</span>
+</span></code></pre></div></p>
+<p>Alle de <code>!</code> er bare kommentarer, som ikke har nogen betydning for konfigurationen.<br>
+De adskillere blot de forskellige sektioner af konfigurationen.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Bemærk at der ikke står <code>no shutdown</code> nogen steder i running-config.<br>
+Dette er fordi ios kun viser <code>shutdown</code>, så hvis du ikke kan se <code>shutdown</code> på en port, så er den aktiv.</p>
+</div>
+<p>Her er alt den samlede konfiguration vi har lavet på routeren:</p>
+<p><div class="language-js highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nx">hostname</span><span class="w"> </span><span class="nx">R1</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="o">!</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="kr">interface</span><span class="w"> </span><span class="nx">fastethernet</span><span class="w"> </span><span class="mf">0</span><span class="o">/</span><span class="mf">0</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">address</span><span class="w"> </span><span class="mf">172.16.0.1</span><span class="w"> </span><span class="mf">255.255.255.0</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w"> </span><span class="nx">no</span><span class="w"> </span><span class="nx">shutdown</span>
+</span></code></pre></div>
+Hvis du er inde i <a href="#global-configuration-mode"><code>Global Configuration Mode</code> </a>, kan du blot kopiere og indsætte konfigurationen, og så vil den virke.<br>
+Man kan faktisk skrive hele konfigurationen i en tekst fil, og så kopiere og indsætte den i routeren, og så vil den konfigurere sig selv. <img alt="😄" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/1f604.svg" title=":smile:" /> <br>
+Dog skal man huske at alt skal være skrevet rigtigt, ellers vil det selfølig ikke virke.</p>
+<h2 id="sikkerhed-og-ssh">Sikkerhed og SSH<a class="headerlink" href="#sikkerhed-og-ssh" title="Permanent link">&para;</a></h2>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Alle adgangskoder i denne guide er <code>Cisco</code>.<br> </p>
+</div>
+<p>Nu er routeren konfigureret, så nu vil vi gerne sikre den, så andre ikke kan komme ind og lave ændringer på den.</p>
+<p>For at gøre dette, skal vi lave en bruger, som har adgang til routeren, og så skal vi sætte en adgangskode på routeren.
+Vi skal også kryptere adgangskoden, så den ikke står i klartekst.</p>
+<p>Der er mange muligheder for kryptering og hashing bla:
+Diffie-Hellman, RSA, AES, 3DES, SHA, MD5 osv.</p>
+<p>Vi starter simplet ud, så her vil vi "bare" bruge Type 5 kryptering.
+Type 5 er faktisk en rigtig svær kryptering at cracke, så det er en god start.</p>
+<div class="admonition warning">
+<p class="admonition-title">Type 5 kryptering</p>
+<p>Type 5 er delt op således:<br>
+<code>$1$&lt;salt&gt;$&lt;hash&gt;</code><br></p>
+<p><code>$1$</code> indikerer at det er Type 5 kryptering.<br>
+<code>&lt;salt&gt;</code> er en tilfældig streng som er tilføjet til passwordet, for at gøre det sværere at cracke.<br>
+<code>$</code> er en seperator.<br>
+<code>&lt;hash&gt;</code> er det faktiske hashede password.<br></p>
+<p>Her er passwordet i min konfig: <code>$1$mERr$YlCkLMcTYWwkF1Ccndtll</code><br>
+Lad os dele det op, så du kan se hvordan det ser ud.<br></p>
+<p><code>$1$</code> indikerer Type 5.<br>
+<code>&lt;salt&gt;</code> er <strong>mERr</strong><br>
+<code>&lt;hash&gt;</code> er <strong>YlCkLMcTYWwkF1Ccndtll</strong>.<br></p>
+</div>
+<h3 id="ip-domain-name">ip domain-name<a class="headerlink" href="#ip-domain-name" title="Permanent link">&para;</a></h3>
+<p>Først skal vi sætte en <code>ip domain-name</code> på routeren.<br>
+Dette gør vi ved at skrive <code>ip domain-name &lt;domæne navn&gt;</code> og trykke enter. inde i <code>Global Configuration Mode</code> ](#global-configuration-mode).<br>
+<code>&lt;domæne navn&gt;</code> er det domæne navn som routeren er en del af - Det kan være hvad som helst.<br>
+Jeg har valgt at kalde mit domæne for <code>test.dk</code>.<br>
+Så jeg skriver <code>ip domain-name test.dk</code> og trykker enter.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Bemærk at der ikke må være mellemrum i domæne navnet.<br>
+<code>ip domain-name test .dk</code> :icon-x-circle-fill:<br>
+<code>ip domain-name test.dk</code> :icon-feed-issue-closed:<br></p>
+</div>
+<p>Domænet bliver brugt til at lave vores RSA nøgle, som vi skal bruge til at kryptere SSH sessionen.</p>
+<p>Hvis man prøver at lave en RSA nøgle uden et domæne, vil man få denne fejl:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="o">%</span><span class="w"> </span><span class="nx">Please</span><span class="w"> </span><span class="nx">define</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">domain</span><span class="o">-</span><span class="nx">name</span><span class="w"> </span><span class="nx">first</span><span class="p">.</span>
+</span></code></pre></div></p>
+<h3 id="crypto-key-generate-rsa">crypto key generate rsa<a class="headerlink" href="#crypto-key-generate-rsa" title="Permanent link">&para;</a></h3>
+<p>Når vi har sat et domæne på routeren, kan vi lave en RSA nøgle.<br>
+For at lave en RSA nøgle, skriver vi <code>crypto key generate rsa</code> og trykker enter.<br>
+Dette vil promte os med, hvor mange bits nøglen skal være på.<br>
+Jeg har valgt at sætte den til 1024 bits, da det er en god størrelse til en router.<br></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Bemærk at jo flere bits nøglen er på, jo længere tid tager den at lave.<br>
+Jo flere bits nøglen er på, jo sværere er den at cracke.<br></p>
+</div>
+<p>Sådan ville det se ud når den prompter dig med spørgsmålet:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nx">How</span><span class="w"> </span><span class="nx">many</span><span class="w"> </span><span class="nx">bits</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">modulus</span><span class="w"> </span><span class="p">[</span><span class="mf">512</span><span class="p">]</span><span class="o">:</span>
+</span></code></pre></div>
+Her er det vigtigt at du skriver <code>1024</code> og trykker enter, så du får en 1024 bits nøgle.<br>
+Hvis du ikke skriver noget, vil den lave en 512 bits nøgle, og det er ikke særlig sikkert.<br>
+Vi skal have <code>SSH Version 2</code>, og det kræver en nøgle der er højrere end 768 bits.<br></p>
+<p>Når du har skrevet <code>1024</code> og trykket enter, vil den prompte dig med dette:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="o">%</span><span class="w"> </span><span class="nx">Generating</span><span class="w"> </span><span class="mf">1024</span><span class="w"> </span><span class="nx">bit</span><span class="w"> </span><span class="nx">RSA</span><span class="w"> </span><span class="nx">keys</span><span class="p">,</span><span class="w"> </span><span class="nx">keys</span><span class="w"> </span><span class="nx">will</span><span class="w"> </span><span class="nx">be</span><span class="w"> </span><span class="nx">non</span><span class="o">-</span><span class="nx">exportable</span><span class="p">...[</span><span class="nx">OK</span><span class="p">]</span>
+</span></code></pre></div>
+Nu har vi lavet en RSA nøgle, som vi kan bruge til at kryptere SSH sessionen.<br></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Hvis du vil slippe for at blive promptet med spørgsmålet, kan du skrive <code>crypto key generate rsa general-keys modulus 1024</code> og trykke enter.<br></p>
+</div>
+<p>Nu skriver vi <code>ip ssh version 2</code> og trykker enter.<br>
+Nu har vi sat SSH versionen til 2.<br></p>
+<h3 id="username-og-password">username og password<a class="headerlink" href="#username-og-password" title="Permanent link">&para;</a></h3>
+<p>Det næste vi skal gøre, er at lave en bruger, som har adgang til routeren.<br>
+Vi vælger at lave en lokal bruger, man kan også sætte aaa på routeren. (Authentication, Authorization, Accounting)
+Men det bliver i en anden guide. <img alt="😄" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/1f604.svg" title=":smile:" /> <br></p>
+<p>For at lave en bruger, skriver vi <code>username &lt;brugernavn&gt; secret &lt;adgangskode&gt;</code> og trykker enter.<br>
+<code>&lt;brugernavn&gt;</code> er det brugernavn som vi vil give brugeren.<br>
+<code>&lt;secret&gt;</code> er den adgangskode som vi vil give brugeren.<br></p>
+<p>Jeg har valgt at kalde min bruger for <code>Cisco</code>, og adgangskoden er <code>Cisco</code>.<br></p>
+<p>Vi skal også sætte <code>enable secret</code> på routeren.<br>
+DEtter gør at folk også skal bruge en adgangskode, når de vil ind i <code>Privileged EXEC Mode</code> ](#privileged-exec-mode).<br></p>
+<p>Vi skriver derfor <code>enable secret &lt;adgangskode&gt;</code>, og trykker enter.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Istedet for <code>secret</code> <em>kan</em> man bruge <code>password</code>.<br></p>
+<p>Det er dog ikke en god ide, da <code>password</code> ikke hasher adgangskoden, så den vil stå i klartekst i konfigurationen.<br></p>
+<p>Man kan bruge <code>service password-encryption</code> til at gøre passwordet ikke læsbart med en Type 7 krypteret hash.</p>
+<p>Dette kan nemt crackes, så det er kun for, at gøre det sværere at læse.<br></p>
+<p>Det er derfor en god ide at bruge <code>secret</code>, da den bruger en stærkere MD5 hash, som er sværere at cracke.<br></p>
+</div>
+<p>Hvis du vil følge min konfig kan du skrive følgende:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nx">username</span><span class="w"> </span><span class="nx">Cisco</span><span class="w"> </span><span class="nx">secret</span><span class="w"> </span><span class="nx">Cisco</span>
+</span></code></pre></div></p>
+<h3 id="line-vty">line vty<a class="headerlink" href="#line-vty" title="Permanent link">&para;</a></h3>
+<p>Nu skal vi konfigurere line vty, så vi kan logge ind på routeren via SSH.</p>
+<p>Når vi skal konfigurere line vty (Virtual teletype), skal vi ind i <code>Line Configuration Mode</code> ](#line-vty), som er en tilstand hvor vi kan lave ændringer på de forskellige virtuelle linjer på routeren.</p>
+<p>For at komme ind i <code>Line Configuration Mode</code> ](#line-vty), skriver vi <code>line vty 0 15</code> og trykker enter.<br>
+<code>0 15</code> er de virtuelle linjer som vi vil lave ændringer på.<br>
+<code>0 - 15</code> er alle de virtuelle linjer på routeren.<br></p>
+<p>Når du er i <code>Line Configuration Mode</code> ](#line-vty), så ser prompten sådan her ud:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nx">R1</span><span class="p">(</span><span class="nx">config</span><span class="o">-</span><span class="nx">line</span><span class="p">)</span><span class="err">#</span>
+</span></code></pre></div>
+Som standart er der <code>transport input all</code> på.</p>
+<p>Det skal vi lige have ændret, så vi skriver <code>transport input ssh</code> og trykker enter.<br>
+Dette gør at vi kun kan logge ind på routeren via SSH, og ikke telnet.<br></p>
+<p>Vi skal også fortælle routeren at vi vil bruge vores lokale bruger til at logge ind med, så vi skriver <code>login local</code> og trykker enter.<br>
+Vi skal også have en adgangskode på, så vi skriver <code>password &lt;adgangskode&gt;</code> og trykker enter.<br></p>
+<p>Vi kommer ikke til at skulle bruge koden.<br>
+Men den er nødvendig for at vi kan logge ind på routeren, med SSH<br></p>
+<p>Vi skal også ind på line con 0, så vi skriver <code>line con 0</code> og trykker enter.<br>
+<code>con</code> står for console, og det er den fysiske port på routeren.<br>
+<code>0</code> er port nummeret.<br></p>
+<p>Her skal vi også sætte <code>login local</code> på og en adgangskode, så vi skriver <code>login local</code> og trykker enter.<br></p>
+<p>Nu skriver vi <code>password &lt;adgangskode&gt;</code> og trykker enter.<br></p>
+<p>Vi skal også ind på line aux 0, så vi skriver <code>line aux 0</code> og trykker enter.<br>
+<code>aux</code> står for auxiliary, og det er også en fysiske port på routeren.<br>
+Den emulerer en modem forbindelse.<br>
+<code>0</code> er port nummeret.<br></p>
+<p>Her skal vi også sætte <code>login local</code> på og en adgangskode, så vi skriver <code>login local</code> og trykker enter.<br></p>
+<p>Vi skriver også <code>password &lt;adgangskode&gt;</code> igen, og trykker enter.<br></p>
+<h3 id="opsummering">Opsummering<a class="headerlink" href="#opsummering" title="Permanent link">&para;</a></h3>
+<p>Nu har vi konfigureret routeren, så den er sikker, og vi kan logge ind på den via SSH.<br>
+Det sidste vi skal, er at gemme konfigurationen, så den ikke forsvinder når vi genstarter routeren.<br></p>
+<p>Vi kan gøre dette på forskellige måder bla:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nx">copy</span><span class="w"> </span><span class="nx">running</span><span class="o">-</span><span class="nx">config</span><span class="w"> </span><span class="nx">startup</span><span class="o">-</span><span class="nx">config</span>
+</span></code></pre></div>
+eller
+<div class="language-js highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nx">write</span><span class="w"> </span><span class="nx">memory</span>
+</span></code></pre></div></p>
+<p>Her er alt den samlede konfiguration vi har lavet på routeren:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nx">hostname</span><span class="w"> </span><span class="nx">R1</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="o">!</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="kr">interface</span><span class="w"> </span><span class="nx">fastethernet</span><span class="w"> </span><span class="mf">0</span><span class="o">/</span><span class="mf">0</span>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="nx">address</span><span class="w"> </span><span class="mf">172.16.0.1</span><span class="w"> </span><span class="mf">255.255.255.0</span>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="w"> </span><span class="nx">no</span><span class="w"> </span><span class="nx">shutdown</span>
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="o">!</span>
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="nx">ip</span><span class="w"> </span><span class="nx">domain</span><span class="o">-</span><span class="nx">name</span><span class="w"> </span><span class="nx">test</span><span class="p">.</span><span class="nx">dk</span>
+</span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="nx">crypto</span><span class="w"> </span><span class="nx">key</span><span class="w"> </span><span class="nx">generate</span><span class="w"> </span><span class="nx">rsa</span><span class="w"> </span><span class="nx">general</span><span class="o">-</span><span class="nx">keys</span><span class="w"> </span><span class="nx">modulus</span><span class="w"> </span><span class="mf">1024</span><span class="w"> </span>
+</span><span id="__span-21-9"><a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a><span class="nx">ip</span><span class="w"> </span><span class="nx">ssh</span><span class="w"> </span><span class="nx">version</span><span class="w"> </span><span class="mf">2</span>
+</span><span id="__span-21-10"><a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a><span class="nx">username</span><span class="w"> </span><span class="nx">Cisco</span><span class="w"> </span><span class="nx">secret</span><span class="w"> </span><span class="nx">Cisco</span>
+</span><span id="__span-21-11"><a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a><span class="nx">enable</span><span class="w"> </span><span class="nx">secret</span><span class="w"> </span><span class="nx">Cisco</span>
+</span><span id="__span-21-12"><a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a><span class="o">!</span>
+</span><span id="__span-21-13"><a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a><span class="nx">line</span><span class="w"> </span><span class="nx">vty</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="mf">15</span>
+</span><span id="__span-21-14"><a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a><span class="w"> </span><span class="nx">transport</span><span class="w"> </span><span class="nx">input</span><span class="w"> </span><span class="nx">ssh</span>
+</span><span id="__span-21-15"><a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a><span class="w"> </span><span class="nx">login</span><span class="w"> </span><span class="nx">local</span>
+</span><span id="__span-21-16"><a id="__codelineno-21-16" name="__codelineno-21-16" href="#__codelineno-21-16"></a><span class="w"> </span><span class="nx">password</span><span class="w"> </span><span class="nx">Cisco</span>
+</span><span id="__span-21-17"><a id="__codelineno-21-17" name="__codelineno-21-17" href="#__codelineno-21-17"></a><span class="o">!</span>
+</span><span id="__span-21-18"><a id="__codelineno-21-18" name="__codelineno-21-18" href="#__codelineno-21-18"></a><span class="nx">line</span><span class="w"> </span><span class="nx">con</span><span class="w"> </span><span class="mf">0</span>
+</span><span id="__span-21-19"><a id="__codelineno-21-19" name="__codelineno-21-19" href="#__codelineno-21-19"></a><span class="w"> </span><span class="nx">login</span><span class="w"> </span><span class="nx">local</span>
+</span><span id="__span-21-20"><a id="__codelineno-21-20" name="__codelineno-21-20" href="#__codelineno-21-20"></a><span class="w"> </span><span class="nx">password</span><span class="w"> </span><span class="nx">Cisco</span>
+</span><span id="__span-21-21"><a id="__codelineno-21-21" name="__codelineno-21-21" href="#__codelineno-21-21"></a><span class="o">!</span>
+</span><span id="__span-21-22"><a id="__codelineno-21-22" name="__codelineno-21-22" href="#__codelineno-21-22"></a><span class="nx">line</span><span class="w"> </span><span class="nx">aux</span><span class="w"> </span><span class="mf">0</span>
+</span><span id="__span-21-23"><a id="__codelineno-21-23" name="__codelineno-21-23" href="#__codelineno-21-23"></a><span class="w"> </span><span class="nx">login</span><span class="w"> </span><span class="nx">local</span>
+</span><span id="__span-21-24"><a id="__codelineno-21-24" name="__codelineno-21-24" href="#__codelineno-21-24"></a><span class="w"> </span><span class="nx">password</span><span class="w"> </span><span class="nx">Cisco</span>
+</span></code></pre></div>
+<h2 id="packet-tracer">Packet Tracer<a class="headerlink" href="#packet-tracer" title="Permanent link">&para;</a></h2>
+<p>Som altid kan du downloade det færdige protjekt her: <a href="https://raw.githubusercontent.com/DenDanskeMine/Retype/main/Downloads/Starter-Guide-Router.pkt">Download Starter-Guide-Router.pkt</a></p>
+<p>Se min <a href="/Starterguide/pt.md">Packet Tracer Starterguide</a></p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 - 2024 Christian Rose
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/squidfunk" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://hub.docker.com/r/squidfunk/mkdocs-material/" target="_blank" rel="noopener" title="hub.docker.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M349.9 236.3h-66.1v-59.4h66.1v59.4zm0-204.3h-66.1v60.7h66.1V32zm78.2 144.8H362v59.4h66.1v-59.4zm-156.3-72.1h-66.1v60.1h66.1v-60.1zm78.1 0h-66.1v60.1h66.1v-60.1zm276.8 100c-14.4-9.7-47.6-13.2-73.1-8.4-3.3-24-16.7-44.9-41.1-63.7l-14-9.3-9.3 14c-18.4 27.8-23.4 73.6-3.7 103.8-8.7 4.7-25.8 11.1-48.4 10.7H2.4c-8.7 50.8 5.8 116.8 44 162.1 37.1 43.9 92.7 66.2 165.4 66.2 157.4 0 273.9-72.5 328.4-204.2 21.4.4 67.6.1 91.3-45.2 1.5-2.5 6.6-13.2 8.5-17.1l-13.3-8.9zm-511.1-27.9h-66v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm-78.1-72.1h-66.1v60.1h66.1v-60.1z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://pypi.org/project/mkdocs-material/" target="_blank" rel="noopener" title="pypi.org" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"/></svg>
+    </a>
+  
+    
+    
+      
+    
+    
+    
+      
+      
+    
+    <a href="https://fosstodon.org/@squidfunk" target="_blank" rel="noopener me" title="fosstodon.org" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M433 179.11c0-97.2-63.71-125.7-63.71-125.7-62.52-28.7-228.56-28.4-290.48 0 0 0-63.72 28.5-63.72 125.7 0 115.7-6.6 259.4 105.63 289.1 40.51 10.7 75.32 13 103.33 11.4 50.81-2.8 79.32-18.1 79.32-18.1l-1.7-36.9s-36.31 11.4-77.12 10.1c-40.41-1.4-83-4.4-89.63-54a102.54 102.54 0 0 1-.9-13.9c85.63 20.9 158.65 9.1 178.75 6.7 56.12-6.7 105-41.3 111.23-72.9 9.8-49.8 9-121.5 9-121.5zm-75.12 125.2h-46.63v-114.2c0-49.7-64-51.6-64 6.9v62.5h-46.33V197c0-58.5-64-56.6-64-6.9v114.2H90.19c0-122.1-5.2-147.9 18.41-175 25.9-28.9 79.82-30.8 103.83 6.1l11.6 19.5 11.6-19.5c24.11-37.1 78.12-34.8 103.83-6.1 23.71 27.3 18.4 53 18.4 175z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://x.com/squidfunk" target="_blank" rel="noopener" title="x.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8l164.9-188.5L26.8 48h145.6l100.5 132.9L389.2 48zm-24.8 373.8h39.1L151.1 88h-42l255.3 333.8z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tooltips", "navigation.footer - navigation.indexes - navigation.instant - navigation.instant.prefetch - navigation.instant.progress - navigation.prune", "navigation.tabs", "navigation.top", "search.highlight", "search.share", "search.suggest"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+    
+  </body>
+</html>
