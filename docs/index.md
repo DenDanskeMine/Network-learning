@@ -59,7 +59,7 @@ interface GigabitEthernet0/1
     dett eer en test
 
 !!! tip "test"
-    dett eer en test    
+    dette er en test    
 
 ???+ tip "test"
     dett eer en test      
