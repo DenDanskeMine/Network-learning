@@ -75,7 +75,7 @@ plugins:
   - blog
   - search:
       separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
-
+  - glightbox
 
 
 
@@ -149,21 +149,38 @@ markdown_extensions:
 
 
 # Page tree
-
 nav:
-  - Hjem: index.md
-  - Introduktion: intro.md
+  - Hjem:
+      - Introduktion: index.md
+      - Palo Alto Networks: pan.md
+      - Cisco: cisco.md
+      - Fortinet: fortinet.md
+      - Lenovo: lenovo.md
+      - Mellanox: mellanox.md
+      - Netværksprotokoller: netvaerksprotokoller.md
+  - Palo Alto Networks:
+    - Introduktion: intro.md
+    - Palo Alto Networks Grundlæggende:
+      - Konfiguration: pan-grundlaeggende-konfiguration.md
+      - Topologier: pan-grundlaeggende-topologier.md
+      - Enheder: pan-grundlaeggende-enheder.md
+      - Protokoller: pan-grundlaeggende-protokoller.md
+    - Palo Alto Networks Mellemniveau:
+      - Routing: pan-mellemniveau-routing.md
+      - Switching: pan-mellemniveau-switching.md
+      - VLANs: pan-mellemniveau-vlans.md
+      - STP: pan-mellemniveau-stp.md
   - Cisco Grundlæggende:
     - Netværkskonfiguration: grundlaeggende-konfiguration.md
     - Netværkstopologier: grundlaeggende-topologier.md
     - Netværksenheder: grundlaeggende-enheder.md
     - Netværksprotokoller: grundlaeggende-protokoller.md
+    - OSPF: ospf-begynder.md
   - Cisco Mellemniveau:
     - Routing: mellemniveau-routing.md
     - Switching: mellemniveau-switching.md
     - VLANs: mellemniveau-vlans.md
     - STP: mellemniveau-stp.md
-
   - Avanceret:
     - Netværkssikkerhed: avanceret-sikkerhed.md
     - Firewalls: firewalls.md
